@@ -1,0 +1,104 @@
+/* NAVBAR */
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+/* LOGO */
+.logo {
+    border-radius: 50%;
+    width: 4rem;
+    margin-right: 1rem;
+}
+
+/* PROMPT AREA */
+.prompt-area {
+    margin: auto;
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 5px solid;
+    border-radius: 1.5rem;
+    width: 50%;
+}
+
+/* SELECT TYPE OF PROMPT AND NUMBER OF RESPONSE */
+
+/* Change font size of span in prompt-area */
+.prompt-area span {
+    font-size: 1.2rem;
+}
+
+/* Add spacing to headings */
+strong {
+    margin-right: 0.5rem;
+}
+
+/* Add bottom spacing */
+.response-num, .prompt-type {
+    margin-bottom: 1rem;
+}
+
+/* OPTIONS */
+#grade, #country, #time {
+    margin-right: 2rem;
+}
+
+#country {
+    width: 10rem;
+}
+
+/* TEXTAREA */
+.textarea {
+    padding: 0.5rem;
+    font-size: 2rem;
+    width: 84%;
+    resize: none;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* SUBMIT BUTTON */
+.generate {
+    margin-bottom: 1.5rem;
+}
+
+/* SUGGESTIONS */
+.try-prompts {
+    display: block;
+}
+
+/* PROMPT */
+ol, ul {
+    padding-inline-start: 1rem;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 990px) {
+    .prompt-area {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .options strong {
+        display: block;
+    }
+
+    select {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .textarea {
+        width: 100%;
+    }
+}
+
+/

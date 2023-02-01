@@ -1,0 +1,18 @@
+{% extends "utils/base.html" %}
+{% block title %}AI Parent - Oops{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="prompt-area">
+            <h5>Oops! Something went wrong.</h5>
+            <p>
+                You seem to have found something we do not have.
+            </p>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Go back Home</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

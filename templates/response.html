@@ -1,0 +1,24 @@
+{% extends "utils/base.html" %}
+{% block title %}AI Parent - Response{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="prompt-area">
+            <h5>Here are your response(s)</h5>
+            <b><span>Your prompt:</span></b>
+            <p>{{ user_prompt }}</p>
+
+            <b><span>Response:</span></b>
+            <p>{{ response }}</p>
+<!--            <ol>-->
+<!--                <li><p>{{ response }}</p></li>-->
+<!--                <li><p>Just a test huh</p></li>-->
+<!--            </ol>-->
+            <a href="{% url 'index' %}" class="btn btn-secondary">New content</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

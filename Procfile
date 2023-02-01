@@ -1,0 +1,1 @@
+web gunicorn aiparentProject.wsgi.application --log-file -
