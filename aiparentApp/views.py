@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
 from decouple import config
 import openai
@@ -15,6 +16,7 @@ def get_response(prompt):
     return response.choices[0].text
 
 # Create your views here.
+@csrf_protect
 def index(request):
     if request.method == "POST":
         user_prompt = request.POST.get('textarea')
