@@ -13,6 +13,12 @@
     margin-right: 1rem;
 }
 
+.beta {
+    border: 1px solid;
+    width: fit-content;
+    padding: 2px;
+}
+
 /* PROMPT AREA */
 .prompt-area {
     margin: auto;
