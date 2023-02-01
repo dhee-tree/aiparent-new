@@ -1,1 +1,1 @@
-web gunicorn aiparentProject.wsgi.application --log-file -
+web gunicorn aiparentProject.wsgi
