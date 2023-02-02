@@ -1,10 +1,14 @@
+// Function to reset dropdowns, removes DRY code
+function resetDDs (...args) {
+    for (let arg of args) {
+        document.getElementById(arg).value = 0;
+    }
+}
+
 function story() {
   var prompt = document.getElementById("prompts").value;
-  // reset number and grade dropdowns
-  document.getElementById("response-number").value = 0;
-  document.getElementById("grade").value = 0;
-  document.getElementById("country").value = 0;
-  document.getElementById("time").value = 0;
+  // reset number, grade, country, and time dropdowns
+  resetDDs("response-number", "grade", "country", "time");
 
   if (prompt == 0) {
     document.getElementById("textarea1").innerHTML = "";
@@ -16,10 +20,8 @@ function story() {
 function number() {
   var prompt = document.getElementById("prompts").value;
   var num = document.getElementById("response-number").value;
-  // reset grade dropdown
-  document.getElementById("grade").value = 0;
-  document.getElementById("country").value = 0;
-  document.getElementById("time").value = 0;
+  // reset grade, country, and time dropdowns
+  resetDDs("grade", "country", "time");
 
   if (num > 1) {
     if (prompt == "story") {
@@ -46,9 +48,8 @@ function kidGrade() {
   var prompt = document.getElementById("prompts").value;
   var num = document.getElementById("response-number").value;
   var grade = document.getElementById("grade").value;
-  // reset country dropdown
-  document.getElementById("country").value = 0;
-  document.getElementById("time").value = 0;
+  // reset country and time dropdowns
+  resetDDs("country", "time");
 
   if (grade != 0) {
     if (num > 1) {
@@ -76,9 +77,8 @@ function kidGrade() {
 
   if (grade == 0) {
     document.getElementById("textarea1").innerHTML = "";
-    // reset response-number dropdown and prompt
-    document.getElementById("response-number").value = 0;
-    document.getElementById("prompts").value = 0;
+    // reset response-number and prompts dropdowns
+    resetDDs("response-number", "prompts");
   } else {
     if (num == 0 && prompt == 0) {
         document.getElementById("textarea1").innerHTML = "";
@@ -93,8 +93,8 @@ function selectCountry() {
   var num = document.getElementById("response-number").value;
   var grade = document.getElementById("grade").value;
   var country = document.getElementById("country").value;
-  // resets duration dropdown
-  document.getElementById("time").value = 0;
+  // resets time dropdown
+  resetDDs("time");
 
   if (country != 0) {
 
@@ -126,10 +126,8 @@ function selectCountry() {
 
   if (country == 0) {
     document.getElementById("textarea1").innerHTML = "";
-    // reset grade response-number dropdowns
-    document.getElementById("grade").value = 0;
-    document.getElementById("response-number").value = 0;
-    document.getElementById("prompts").value = 0;
+    // reset grade, response-number and prompts dropdowns
+    resetDDs("grade", "response-number", "prompts");
   } else {
     if (num == 0 && prompt == 0) {
         document.getElementById("textarea1").innerHTML = "";
@@ -182,11 +180,8 @@ function duration() {
 
   if (time == 0) {
     document.getElementById("textarea1").innerHTML = "";
-    // reset grade response-number dropdowns
-    document.getElementById("grade").value = 0;
-    document.getElementById("response-number").value = 0;
-    document.getElementById("prompts").value = 0;
-    document.getElementById("country").value = 0;
+    // reset grade, response-number, prompts and country dropdowns
+    resetDDs("grade", "response-number", "prompts", "country");
   } else {
     if (num == 0 && prompt == 0) {
         document.getElementById("textarea1").innerHTML = "";
