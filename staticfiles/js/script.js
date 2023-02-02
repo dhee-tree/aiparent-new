@@ -44,29 +44,23 @@ function addGrade(grade) {
     return gradeText;
 }
 
-function story() {
-  var prompt = document.getElementById("prompts").value;
-  // reset number, grade, country, and time dropdowns
-  resetDDs("response-number", "grade", "country", "time");
+function promptAndNumber(id) {
+    var prompt = document.getElementById("prompts").value;
+    var num = document.getElementById("response-number").value;
 
-  if (prompt == 0) {
-    document.getElementById("textarea1").innerHTML = "";
-  } else {
-    document.getElementById("textarea1").innerHTML = `Give me a ${prompt} for a kid`;
-  }
-}
+    if (id == 'prompts') {
+        resetDDs("response-number", "grade", "country", "time");
+        var finalText = `Give me a ${prompt} for a kid`;
+    } else if (id == 'response-number') {
+        resetDDs("grade", "country", "time");
+        var finalText = `${singlePlural(num, prompt)} for a kid`;
+    }
 
-function number() {
-  var prompt = document.getElementById("prompts").value;
-  var num = document.getElementById("response-number").value;
-  // reset grade, country, and time dropdowns
-  resetDDs("grade", "country", "time");
-
-  if (prompt == 0) {
-    document.getElementById("textarea1").innerHTML = "";
-  } else {
-    document.getElementById("textarea1").innerHTML = `${singlePlural(num, prompt)} for a kid`;
-  }
+    if (prompt == 0) {
+        document.getElementById("textarea1").innerHTML = "";
+    } else {
+        document.getElementById("textarea1").innerHTML = finalText;
+    }
 }
 
 function kidGrade() {

@@ -11,7 +11,7 @@
                 {% csrf_token %}
                 <div class="prompt-type">
                     <strong><span>Select type of prompt:</span></strong>
-                    <select id="prompts" name="prompts" onchange="story()">
+                    <select id="prompts" name="prompts" onchange="promptAndNumber('prompts')">
                         <option value="0" selected>Select prompt type</option>
                         <option value="story" id="story" class="radio-btn story">Story</option>
                         <option value="joke" id="joke" class="radio-btn">Joke</option>
@@ -22,7 +22,7 @@
 
                 <div class="response-num">
                     <strong><span>Number of response:</span></strong>
-                    <select id="response-number" name="response-number" onchange="number()">
+                    <select id="response-number" name="response-number" onchange="promptAndNumber('response-number')">
                         <option value="0" selected>How many</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
