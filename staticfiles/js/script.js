@@ -31,6 +31,18 @@ function singlePlural(...args) {
     return text;
 }
 
+// Function to add grade to text
+function addGrade(grade) {
+    if (grade == 'reception') {
+        var gradeText = ' for a kid in reception';
+    } else if (grade == 0) {
+        var gradeText = " for a kid";
+    } else {
+        var gradeText = ` for a ${grade} kid`;
+    }
+    return gradeText;
+}
+
 function story() {
   var prompt = document.getElementById("prompts").value;
   // reset number, grade, country, and time dropdowns
@@ -64,12 +76,7 @@ function kidGrade() {
   resetDDs("country", "time");
 
   if (grade != 0) {
-    if (grade == "reception") {
-        var gradeText = " for a kid in reception";
-    } else {
-        var gradeText = ` for a ${grade} kid`;
-    }
-    var finalText = singlePlural(num, prompt) + gradeText;
+    var finalText = singlePlural(num, prompt) + addGrade(grade);
   }
 
   if (grade == 0) {
@@ -94,14 +101,7 @@ function selectCountry() {
   resetDDs("time");
 
   if (country != 0) {
-    if (grade == "reception") {
-        var gradeText = " for a kid in reception";
-    } else if (grade == 0) {
-        var gradeText = " for a kid";
-    } else {
-        var gradeText = ` for a ${grade} kid`;
-    }
-    var finalText = `${singlePlural(num, prompt)}${gradeText} in ${country}`;
+    var finalText = `${singlePlural(num, prompt)}${addGrade(grade)} in ${country}`;
   }
 
   if (country == 0) {
@@ -127,18 +127,10 @@ function duration() {
   var country = document.getElementById("country").value;
 
   if (time != 0) {
-    if (grade == "reception") {
-        var gradeText = " for a kid in reception";
-    } else if (grade == 0) {
-        var gradeText = " for a kid";
-    } else {
-        var gradeText = ` for a ${grade} kid`;
-    }
-
     if (country == 0) {
         var finalText = text + gradeText;
     } else {
-        var finalText = `${singlePlural(num, prompt, time)}${gradeText} from ${country}`;
+        var finalText = `${singlePlural(num, prompt, time)}${addGrade(grade)} from ${country}`;
     }
   }
 
