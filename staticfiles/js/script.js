@@ -5,6 +5,32 @@ function resetDDs (...args) {
     }
 }
 
+// Function to return singular or plural of given prompt i.e story or stories
+// 0 == amount, 1 == prompt, 2 == time
+function singlePlural(...args) {
+    if (args[0] > 1) { // if amount is greater than 1, change prompt to plural
+        if (args[1] == "story") { // if prompt is story, change to stories
+            args[1] = "stories";
+        } else if (args[1] == "joke") { // if prompt is joke, change to jokes
+            args[1] = "jokes";
+        }
+        // check if args has 3 elements, if so, add time to text
+        if (args.length == 3) {
+            var text = `Give me ${args[0]}, ${args[2]} ${args[1]}`;
+        } else {
+            var text = `Give me ${args[0]} ${args[1]}`;
+        }
+      } else {
+        if (args.length == 3) {
+            var text = `Give me a ${args[2]} ${args[1]}`;
+        } else {
+            var text = `Give me a ${args[1]}`;
+        }
+      }
+
+    return text;
+}
+
 function story() {
   var prompt = document.getElementById("prompts").value;
   // reset number, grade, country, and time dropdowns
@@ -23,24 +49,10 @@ function number() {
   // reset grade, country, and time dropdowns
   resetDDs("grade", "country", "time");
 
-  if (num > 1) {
-    if (prompt == "story") {
-        prompt = "stories";
-    } else if (prompt == "joke") {
-        prompt = "jokes";
-    }
-
-    var text = `Give me ${num} ${prompt} for a kid`;
-    // "Give me " + num + " " + prompt + " for a kid"
-  } else {
-    var text = `Give me a ${prompt} for a kid`;
-    // "Give me a " + prompt + " for a kid"
-  }
-
   if (prompt == 0) {
     document.getElementById("textarea1").innerHTML = "";
   } else {
-    document.getElementById("textarea1").innerHTML = text;
+    document.getElementById("textarea1").innerHTML = `${singlePlural(num, prompt)} for a kid`;
   }
 }
 
@@ -52,27 +64,12 @@ function kidGrade() {
   resetDDs("country", "time");
 
   if (grade != 0) {
-    if (num > 1) {
-        if (prompt == "story") {
-            prompt = "stories";
-        } else if (prompt == "joke") {
-            prompt = "jokes";
-        }
-        var text = `Give me ${num} ${prompt}`;
-        //"Give me " + num + " " + prompt
-    } else {
-        var text = `Give me a ${prompt}`;
-        // "Give me a " + prompt
-    }
-
     if (grade == "reception") {
         var gradeText = " for a kid in reception";
     } else {
         var gradeText = ` for a ${grade} kid`;
-        // " for a " + grade + " kid"
     }
-
-    var finalText = text + gradeText;
+    var finalText = singlePlural(num, prompt) + gradeText;
   }
 
   if (grade == 0) {
@@ -97,31 +94,14 @@ function selectCountry() {
   resetDDs("time");
 
   if (country != 0) {
-
-    if (num > 1) {
-        if (prompt == "story") {
-            prompt = "stories";
-        } else if (prompt == "joke") {
-            prompt = "jokes";
-        }
-        var text = `Give me ${num} ${prompt}`;
-        // "Give me " + num + " " + prompt
-    } else {
-        var text = `Give me a ${prompt}`;
-        // "Give me a " + prompt
-    }
-
     if (grade == "reception") {
         var gradeText = " for a kid in reception";
     } else if (grade == 0) {
         var gradeText = " for a kid";
     } else {
         var gradeText = ` for a ${grade} kid`;
-        // " for a " + grade + " kid"
     }
-
-    var finalText = `${text}${gradeText} in ${country}`;
-    // text + gradeText + " from " + country
+    var finalText = `${singlePlural(num, prompt)}${gradeText} in ${country}`;
   }
 
   if (country == 0) {
@@ -147,34 +127,18 @@ function duration() {
   var country = document.getElementById("country").value;
 
   if (time != 0) {
-
-    if (num > 1) {
-        if (prompt == "story") {
-            prompt = "stories";
-        } else if (prompt == "joke") {
-            prompt = "jokes";
-        }
-        var text = `Give me ${num}, ${time} ${prompt}`;
-        // "Give me " + num + ", " + time + " " + prompt
-    } else {
-        var text = `Give me a ${time} ${prompt}`;
-        // "Give me a " + time + " " + prompt
-    }
-
     if (grade == "reception") {
         var gradeText = " for a kid in reception";
     } else if (grade == 0) {
         var gradeText = " for a kid";
     } else {
         var gradeText = ` for a ${grade} kid`;
-        // " for a " + grade + " kid"
     }
 
     if (country == 0) {
         var finalText = text + gradeText;
     } else {
-        var finalText = `${text}${gradeText} from ${country}`;
-        // text + gradeText + " from " + country
+        var finalText = `${singlePlural(num, prompt, time)}${gradeText} from ${country}`;
     }
   }
 
