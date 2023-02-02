@@ -8,6 +8,7 @@ function resetDDs (...args) {
 // Function to return singular or plural of given prompt i.e story or stories
 // 0 == amount, 1 == prompt, 2 == time
 function singlePlural(...args) {
+    console.log(args[2]);
     if (args[0] > 1) { // if amount is greater than 1, change prompt to plural
         if (args[1] == "story") { // if prompt is story, change to stories
             args[1] = "stories";
@@ -128,7 +129,7 @@ function duration() {
 
   if (time != 0) {
     if (country == 0) {
-        var finalText = text + gradeText;
+        var finalText = singlePlural(num, prompt, time) + addGrade(grade);
     } else {
         var finalText = `${singlePlural(num, prompt, time)}${addGrade(grade)} from ${country}`;
     }
