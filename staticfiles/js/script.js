@@ -57,9 +57,9 @@ function promptAndNumber(id) {
     }
 
     if (prompt == 0) {
-        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").value = "";
     } else {
-        document.getElementById("textarea1").innerHTML = finalText;
+        document.getElementById("textarea1").value = finalText;
     }
 }
 
@@ -80,9 +80,9 @@ function kidGrade() {
     resetDDs("response-number", "prompts");
   } else {
     if (num == 0 && prompt == 0) {
-        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").value = "";
     } else {
-        document.getElementById("textarea1").innerHTML = finalText;
+        document.getElementById("textarea1").value = finalText;
     }
   }
 }
@@ -100,15 +100,15 @@ function selectCountry() {
   }
 
   if (country == 0) {
-    document.getElementById("textarea1").innerHTML = "";
+    document.getElementById("textarea1").value = "";
     // reset grade, response-number and prompts dropdowns
     resetDDs("grade", "response-number", "prompts");
   } else {
     if (num == 0 && prompt == 0) {
-        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").value = "";
     } else {
         if (prompt != 0) {
-            document.getElementById("textarea1").innerHTML = finalText;
+            document.getElementById("textarea1").value = finalText;
         }
     }
   }
@@ -135,10 +135,10 @@ function duration() {
     resetDDs("grade", "response-number", "prompts", "country");
   } else {
     if (num == 0 && prompt == 0) {
-        document.getElementById("textarea1").innerHTML = "";
+        document.getElementById("textarea1").value = "";
     } else {
         if (prompt != 0) {
-            document.getElementById("textarea1").innerHTML = finalText;
+            document.getElementById("textarea1").value = finalText;
         }
     }
   }
@@ -146,5 +146,5 @@ function duration() {
 
 function suggestion(id) {
     var suggestion = document.getElementById(id).innerHTML;
-    document.getElementById("textarea1").innerHTML = suggestion;
+    document.getElementById("textarea1").value = suggestion;
 }
