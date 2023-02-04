@@ -1,7 +1,7 @@
 // Function to reset dropdowns, removes DRY code
 function resetDDs (...args) {
-    for (let arg of args) {
-        document.getElementById(arg).value = 0;
+    for (let arg of args) { // for each argument, set value to 0, this resets the value of the argument i.e dropdown
+        document.getElementById(arg).value = 0; // set dropdown value to 0
     }
 }
 
@@ -64,24 +64,22 @@ function promptAndNumber(id) {
 }
 
 function kidGrade() {
+  // Get all the needed elements from html page
   var prompt = document.getElementById("prompts").value;
   var num = document.getElementById("response-number").value;
   var grade = document.getElementById("grade").value;
   // reset country and time dropdowns
   resetDDs("country", "time");
-
-  if (grade != 0) {
-    var finalText = singlePlural(num, prompt) + addGrade(grade);
-  }
-
+  // Generate singular or plural text and add grade
+  var finalText = singlePlural(num, prompt) + addGrade(grade);
+  // Check if grade is 0, if so, reset response-number and prompts dropdowns
   if (grade == 0) {
     document.getElementById("textarea1").innerHTML = "";
-    // reset response-number and prompts dropdowns
     resetDDs("response-number", "prompts");
-  } else {
-    if (num == 0 && prompt == 0) {
+  } else { // if grade is not 0, check if prompts is 0, if so, make textarea empty
+    if (prompt == 0) {
         document.getElementById("textarea1").value = "";
-    } else {
+    } else { // if prompts is not 0, add text to textarea
         document.getElementById("textarea1").value = finalText;
     }
   }
@@ -95,21 +93,17 @@ function selectCountry() {
   // resets time dropdown
   resetDDs("time");
 
-  if (country != 0) {
-    var finalText = `${singlePlural(num, prompt)}${addGrade(grade)} in ${country}`;
-  }
+  var finalText = `${singlePlural(num, prompt)}${addGrade(grade)} in ${country}`;
 
   if (country == 0) {
-    document.getElementById("textarea1").value = "";
+    document.getElementById("textarea1").value = ""; // Reset textarea
     // reset grade, response-number and prompts dropdowns
     resetDDs("grade", "response-number", "prompts");
   } else {
-    if (num == 0 && prompt == 0) {
+    if (prompt == 0) {
         document.getElementById("textarea1").value = "";
     } else {
-        if (prompt != 0) {
-            document.getElementById("textarea1").value = finalText;
-        }
+        document.getElementById("textarea1").value = finalText;
     }
   }
 }
@@ -134,12 +128,10 @@ function duration() {
     // reset grade, response-number, prompts and country dropdowns
     resetDDs("grade", "response-number", "prompts", "country");
   } else {
-    if (num == 0 && prompt == 0) {
+    if (prompt == 0) {
         document.getElementById("textarea1").value = "";
     } else {
-        if (prompt != 0) {
-            document.getElementById("textarea1").value = finalText;
-        }
+        document.getElementById("textarea1").value = finalText;
     }
   }
 }
