@@ -47,6 +47,17 @@ function addGrade(grade) {
     return gradeText;
 }
 
+// Function to add generated text for textarea
+function textArea(prompt, finalText) {
+    // Check if prompts is empty before adding text to textarea
+    if (prompt == 0) {
+        document.getElementById("textarea1").value = ""; // if prompts is empty, make textarea empty
+    } else {
+        document.getElementById("textarea1").value = finalText; // Else add text to textarea
+    }
+}
+
+// Function for type of prompt and amount of responses selection dropdowns
 function promptAndNumber(id) {
     // Get all the needed elements from html page
     var prompt = document.getElementById("prompts").value;
@@ -59,14 +70,11 @@ function promptAndNumber(id) {
         resetDDs("grade", "country", "time"); // reset grade, country and time dropdowns
         var finalText = `${singlePlural(num, prompt)} for a kid`; // Generate text with prompt and amount
     }
-    // Check if prompts is empty before adding text to textarea
-    if (prompt == 0) {
-        document.getElementById("textarea1").value = ""; // if prompts is empty, make textarea empty
-    } else {
-        document.getElementById("textarea1").value = finalText; // Else add text to textarea
-    }
+    // Add text to textarea
+    textArea(prompt, finalText);
 }
 
+// Function for grade selection dropdown
 function kidGrade() {
   // Get all the needed elements from html page
   var prompt = document.getElementById("prompts").value;
@@ -80,15 +88,12 @@ function kidGrade() {
   if (grade == 0) { // Check if grade is empty
     document.getElementById("textarea1").value = ""; // Reset textarea
     resetDDs("response-number", "prompts"); // reset response-number and prompts dropdowns
-  } else { // if grade is not 0, check if prompts is 0, if so, make textarea empty
-    if (prompt == 0) { // Check if prompts is empty before adding text to textarea
-        document.getElementById("textarea1").value = ""; // if prompts is empty, make textarea empty
-    } else {
-        document.getElementById("textarea1").value = finalText; // Else add text to textarea
-    }
+  } else { // Add text to textarea
+    textArea(prompt, finalText);
   }
 }
 
+// Function for country selection dropdown
 function selectCountry() {
   // Get all the needed elements from html page
   var prompt = document.getElementById("prompts").value;
@@ -102,17 +107,13 @@ function selectCountry() {
 
   if (country == 0) { // Check if country is empty
     document.getElementById("textarea1").value = ""; // Reset textarea
-    // reset grade, response-number and prompts dropdowns
-    resetDDs("grade", "response-number", "prompts");
-  } else { // if country is not 0, check if prompts is 0, if so, make textarea empty
-    if (prompt == 0) { // Check if prompts is empty before adding text to textarea
-        document.getElementById("textarea1").value = ""; // if prompts is empty, make textarea empty
-    } else {
-        document.getElementById("textarea1").value = finalText; // Else add text to textarea
-    }
+    resetDDs("grade", "response-number", "prompts"); // reset grade, response-number and prompts dropdowns
+  } else { // Add text to textarea
+    textArea(prompt, finalText);
   }
 }
 
+// Function for time selection dropdown
 function duration() {
   // Get all the needed elements from html page
   var time = document.getElementById("time").value;
@@ -133,11 +134,7 @@ function duration() {
     document.getElementById("textarea1").value = ""; // Reset textarea
     // reset grade, response-number, prompts and country dropdowns
     resetDDs("grade", "response-number", "prompts", "country");
-  } else { // if time is not 0, check if prompts is 0, if so, make textarea empty
-    if (prompt == 0) {  // Check if prompts is empty before adding text to textarea
-        document.getElementById("textarea1").value = ""; // if prompts is empty, make textarea empty
-    } else {
-        document.getElementById("textarea1").value = finalText; // Else add text to textarea
-    }
+  } else { // Add text to textarea
+    textArea(prompt, finalText);
   }
 }
