@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import requires_csrf_token
 from django.shortcuts import render
 from decouple import config
+import pandas as pd
 import openai
 
 # OPENAI API call
@@ -27,6 +28,13 @@ def index(request):
             'response': response,
         }
         return render(request, 'response.html', context)
-
-    context = {}
-    return render(request, 'index.html', context)
+    else:
+        # Reading the csv file
+        data = pd.read_csv('aiparentApp/suggestions.csv')
+        suggestions = data["Suggestions"].to_list()
+        context = {
+            'sug1': suggestions[0],
+            'sug2': suggestions[1],
+            'sug3': suggestions[2],
+        }
+        return render(request, 'index.html', context)
