@@ -1,0 +1,8 @@
+__pycache__/
+.vscode
+README.md
+venv/
+
+# Ignore git files
+.git/
+.gitignore
